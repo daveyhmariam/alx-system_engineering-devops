@@ -1,2 +1,2 @@
-hsab/nib/!#
-1 f- / d- tuc| ver| ytpme- . dnif 
+#!/bin/bash
+ find . -empty |rev |cut -d / -f 1 |rev 
