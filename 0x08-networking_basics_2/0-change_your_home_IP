@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 #   -resolve localhost to 127.0.0.2
 #   -resolves facebook.com to 8.8.8.8s
 echo "127.0.0.2     localhost" >> /etc/hosts
