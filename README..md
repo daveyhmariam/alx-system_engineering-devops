@@ -1,1 +1,1 @@
-redirection commans shell basics.
+redirection commands shell basics.
