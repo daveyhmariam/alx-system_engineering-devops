@@ -1,1 +1,0 @@
-bash conditions loops and parsing
