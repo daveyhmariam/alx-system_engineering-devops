@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #loop with while    
 NUM=1
-while [ $NUM -le 10 ]
+while [ $NUM -le 20 ]
 do
 echo $NUM
 case $NUM in
