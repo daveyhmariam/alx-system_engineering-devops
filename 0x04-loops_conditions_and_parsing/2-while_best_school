@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+NUM=10
+while [ $NUM -gt 0 ]
+do
+echo "Best School"
+NUM=$((NUM-1))
+done
