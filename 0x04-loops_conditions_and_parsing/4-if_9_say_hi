@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#loop with while
+NUM=10
+while [ $NUM -gt 0 ]
+do
+echo Best School
+if [ $NUM -eq 2 ]
+then
+echo Hi
+fi
+NUM=$((NUM-1))
+done
