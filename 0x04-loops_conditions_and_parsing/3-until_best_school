@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#loop with util
+NUM=10
+until [ $NUM -eq 0 ]
+do
+echo Best School
+NUM=$((NUM-1))
+done
