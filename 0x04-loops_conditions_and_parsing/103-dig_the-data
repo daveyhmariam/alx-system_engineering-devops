@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Group visitors by IP and HTTP status code, and display the data in the specified format
 
 # Use awk to group, count occurrences, and format the data
