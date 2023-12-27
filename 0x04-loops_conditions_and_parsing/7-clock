@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# display the hour and minute hands
+
+HOUR=0
+
+while [ $HOUR -le 12 ]
+do
+echo "Hour: $HOUR"
+MINUTE=1
+while [ $MINUTE -lt 60 ]
+do
+echo $MINUTE
+MINUTE=$((MINUTE + 1))
+done
+MINUTE=$((MINUTE + 1))
+done
