@@ -10,5 +10,5 @@ do
         echo $MINUTE
         MINUTE=$((MINUTE + 1))
     done
-    MINUTE=$((MINUTE + 1))
+    HOUR=$((HOUR + 1))
 done
