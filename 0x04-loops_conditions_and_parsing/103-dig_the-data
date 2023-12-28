@@ -2,4 +2,5 @@
 # Group visitors by IP and HTTP status code, and display the data in the specified format
 
 # Use awk to group, count occurrences, and format the data
-awk '{ count[$1, $9]++ } END { for ( ip_http in count ) print count[ip_http], ip_http }' apache-access.log | sort -nr | awk '{ print $1, $2, $3 }'
+
+awk '{ print $1, $9}' apache-access.log | sort | uniq -c | sort -nr
