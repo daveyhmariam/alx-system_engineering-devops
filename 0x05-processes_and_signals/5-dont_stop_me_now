@@ -2,7 +2,7 @@
 # another way to terminate a process
 
 id=$(pgrep -f 4-to_infinity_and_beyond)
-if [ -n $id ]
+if [ -n "$id" ]
 then
 kill "$id"
 fi
