@@ -1,8 +1,6 @@
-# creates file in /tmp
-
-file { '/tmp/school':
-  content =>'I love Puppet',
-  mode    => '0744',
-  owner   => 'www-data',
-  group   => 'www-data',
+#!/usr/bin/pup
+# Install an especific version of flask (2.1.0)
+package {'flask':
+  ensure   => '2.1.0',
+  provider => 'pip3'
 }
