@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # installs nginx and configures it on a remote server
+apt -y update
 apt install nginx -y
 mkdir -p /var/www/
 echo "Hello World!" > /var/www/html/index.html
