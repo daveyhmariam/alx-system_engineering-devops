@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Install and configure HAproxy
+apt -y update
+apt -y install haproxy
+touch /etc/haproxy/haproxy.cfg
+chmod -x /etc/haproxy/haproxy.cfg
+printf "frontend\n\tbind *:80\n\tmode http\n\ttimeout client 60s\n\tdefault_backend webservers\n\ttimeout connect 20s\n\ttimeout server 100s\n\tmode http\n\tserver 196709-web-01 54.144.156.106 check\n\tserver 196709-web-01 100.26.161.58check\n" >> /etc/haproxy/haproxy.cfg
+service haproxy restart
