@@ -5,3 +5,4 @@ service nginx start
 PORT=80
 FIL="/etc/nginx/nginx.conf"
 sed "s/listen [0-9]\+/listen $PORT/" "$FIL"
+service nginx restart
