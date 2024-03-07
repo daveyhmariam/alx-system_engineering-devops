@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Bash script must accept 2 arguments
+# The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
+info () {
+    l=$(dig "$2"."$1" | grep -A1 "ANSWER SECTION:" | tr "\t" "\n" | tail -2 | tr "\n" " ")
+    echo "$2" "$l" | awk '{print "The subdomain "$1" is a "$2" record and points to "$3""}'
+}
+if [ "$#" == 1 ]
+then
+    info "$1" "www"
+    info "$1" "lb-01"
+    info "$1" "web-01"
+    info "$1" "web-02"
+elif [ "$#" == 2 ]
+then
+    info "$1" "$2"
+fi
