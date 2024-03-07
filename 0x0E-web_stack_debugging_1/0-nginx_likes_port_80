@@ -3,6 +3,6 @@
 # Write a Bash script that configures a server to the above requirements
 service nginx start
 PORT=80
-FIL="/etc/nginx/nginx.conf"
+FIL="/etc/nginx/sites-available/default"
 sed "s/listen [0-9]\+/listen $PORT/" "$FIL"
 service nginx restart
