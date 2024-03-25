@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-The function retrieves and displays the completed tasks
+retrieves and displays the completed tasks
 of a specific employee from a JSON API.
 """
 import csv
