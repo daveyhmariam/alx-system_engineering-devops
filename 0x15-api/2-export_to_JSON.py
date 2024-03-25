@@ -1,19 +1,34 @@
 #!/usr/bin/python3
-"""Exports to JSON format."""
+"""
+The function retrieves and displays the completed tasks
+of a specific employee from a JSON API.
+"""
 import json
 import requests
-import sys
+from sys import argv
 
-if __name__ == "__main__":
-    user_id = sys.argv[1]
-    url = "https://jsonplaceholder.typicode.com/"
-    user = requests.get(url + "users/{}".format(user_id)).json()
-    username = user.get("username")
-    todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
-    with open("{}.json".format(user_id), "w") as jsonfile:
-        json.dump({user_id: [{
-                "task": t.get("title"),
-                "completed": t.get("completed"),
-                "username": username
-            } for t in todos]}, jsonfile)
+def main():
+    '''getting data for an api'''
+    url = f'https://jsonplaceholder.typicode.com/users/{argv[1]}'
+    url2 = f'https://jsonplaceholder.typicode.com/users/{argv[1]}/todos'
+    response = requests.get(url)
+    name = response.json().get('username', None)
+    json_dict = []
+    response = requests.get(url2)
+
+    for task in response.json():
+        dic = {}
+        dic['task'] = task.get('title')
+        dic['completed'] = task.get('completed')
+        dic['username'] = name
+        json_dict.append(dic)
+
+    filename = argv[1] + '.json'
+
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump({argv[1]: json_dict}, f)
+
+
+if __name__ == '__main__':
+    main()
