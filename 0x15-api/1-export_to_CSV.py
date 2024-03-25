@@ -1,18 +1,37 @@
 #!/usr/bin/python3
-"""Exports to CSV format."""
+"""
+The function retrieves and displays the completed tasks
+of a specific employee from a JSON API.
+"""
 import csv
 import requests
-import sys
+from sys import argv
 
-if __name__ == "__main__":
-    user_id = sys.argv[1]
-    url = "https://jsonplaceholder.typicode.com/"
-    user = requests.get(url + "users/{}".format(user_id)).json()
-    username = user.get("username")
-    todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
-    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
-        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        [writer.writerow(
-            [user_id, username, t.get("completed"), t.get("title")]
-         ) for t in todos]
+def main():
+    '''getting data for an api'''
+    url = f'https://jsonplaceholder.typicode.com/users/{argv[1]}'
+    url2 = f'https://jsonplaceholder.typicode.com/users/{argv[1]}/todos'
+    response = requests.get(url)
+    name = response.json().get('username', None)
+    csv_dict = []
+    response = requests.get(url2)
+
+    for task in response.json():
+        dic = {}
+        dic['userId'] = task.get('userId')
+        dic['username'] = name
+        dic['completed'] = task.get('completed')
+        dic['title'] = task.get('title')
+        csv_dict.append(dic)
+
+    fields = ['userId', 'username', 'completed', 'title']
+    filename = argv[1] + '.csv'
+
+    with open(filename, 'w', encoding='utf-8') as f:
+        write = csv.DictWriter(f, fieldnames=fields, quoting=csv.QUOTE_ALL)
+        write.writerows(csv_dict)
+
+
+if __name__ == '__main__':
+    main()
