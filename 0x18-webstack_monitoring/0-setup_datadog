@@ -1,0 +1,8 @@
+acef3558e078f355797305c6fa8fdc54
+fe7524c6cbf1b5840411d841aa9b2b03e31a062b
+
+curl -X GET "https://api.datadoghq.com/api/v1/hosts" \
+     -H "Content-Type: application/json" \
+     -H "DD-API-KEY: acef3558e078f355797305c6fa8fdc54" \
+     -H "DD-APPLICATION-KEY: fe7524c6cbf1b5840411d841aa9b2b03e31a062b" \
+     -d '{"query": "system.cpu.idle{*}by{host:196709-web-01}"}'
