@@ -18,8 +18,8 @@ def number_of_subscribers(subreddit):
     header = {"User-Agent": "learner"}
 
     response = requests.get(url=url, headers=header, allow_redirects=False)
-    if response.status_code == 200:
+    if response.status_code == 404:
+        return 0
+    else:
         data = response.json()
         return data["data"]["subscribers"]
-    else:
-        return 0
