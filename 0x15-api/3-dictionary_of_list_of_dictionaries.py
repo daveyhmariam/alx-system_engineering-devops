@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """using this REST API, for a given employee ID, returns
-    information about his/her TODO list progress.
+    information about all users TODO.
 
 """
 import json
@@ -24,4 +24,3 @@ if __name__ == "__main__":
         all_dict[user_id] = user_list
     with open("todo_all_employees.json", "w") as f:
         json.dump(all_dict, f, indent=4)
-            
