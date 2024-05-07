@@ -17,7 +17,7 @@ if __name__ == "__main__":
         user_list = []
         for todo in todos:
             user_dict = {}
-            user_dict["username"] = user["name"]
+            user_dict["username"] = user["username"]
             user_dict["task"] = todo["title"]
             user_dict["completed"] = todo["completed"]
             user_list.append(user_dict)
