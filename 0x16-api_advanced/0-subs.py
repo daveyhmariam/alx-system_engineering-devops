@@ -14,13 +14,16 @@ def number_of_subscribers(subreddit):
         platform where users can submit posts, comment on posts,
         and engage with other users on specific topics.
     """
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    url = "https://www.reddit.com/r/{}/about.json?limit=0".format(subreddit)
     header = {"User-Agent": "MyRedditApp/1.0"}
 
-    response = requests.get(url=url, headers=header, allow_redirects=False)
+    try:
+        response = requests.get(url=url, headers=header, allow_redirects=False)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        return 0
     if response.status_code == 200:
         data = response.json()
         return data.get("data")["subscribers"]
     else:
         return 0
-
