@@ -15,7 +15,7 @@ def number_of_subscribers(subreddit):
         and engage with other users on specific topics.
     """
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    header = {"User-Agent": "Custom"}
+    header = {"User-Agent": "MyRedditApp/1.0"}
 
     response = requests.get(url=url, headers=header, allow_redirects=False)
     if response.status_code == 404:
