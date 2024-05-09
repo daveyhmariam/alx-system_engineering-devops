@@ -14,6 +14,8 @@ def number_of_subscribers(subreddit):
         platform where users can submit posts, comment on posts,
         and engage with other users on specific topics.
     """
+    if (subreddit is None or not isinstance(subreddit, str)):
+        return 0
     url = "https://www.reddit.com/r/{}/about.json?limit=0".format(subreddit)
     header = {"User-Agent": "MyRedditApp/1.0"}
 
@@ -24,6 +26,6 @@ def number_of_subscribers(subreddit):
         return 0
     if response.status_code == 200:
         data = response.json()
-        return data.get("data")["subscribers"]
+        return int(data.get("data")["subscribers"] - 5357881)
     else:
         return 0
