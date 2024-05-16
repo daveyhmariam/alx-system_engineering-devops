@@ -1,0 +1,16 @@
+[Unit]
+Description=Gunicorn instance to serve myproject
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+StandardOutput=file:/tmp/airbnb-access.log
+StandardError=file:/tmp/airbnb-error.log
+WorkingDirectory=/home/ubuntu/AirBnB_clone_v4/web_dynamic
+Environment="PATH=/home/ubuntu/venv/bin"
+ExecStart=/home/ubuntu/venv/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/AirBnB_clone_v4/web_dynamic.sock -m 007 -b localhost:5003 2-hbnb:app
+
+[Install]
+WantedBy=multi-user.target
+    
